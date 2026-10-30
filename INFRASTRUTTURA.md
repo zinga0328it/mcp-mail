@@ -7,7 +7,7 @@
 
 | Host | Tipo / hardware noto | Ruolo stabilito | Note |
 |---|---|---|---|
-| **ale** | Server principale ("server grande") | Ospita il database **PostgreSQL** | Database non esposto su Internet; raggiungibile dal broker soltanto tramite rete **Yggdrasil** e con controlli di accesso |
+| **ale** | Server principale ("server grande") | Ospita il database **PostgreSQL** e il **gateway MCP centrale** | Database non esposto su Internet; raggiungibile dal broker soltanto tramite rete **Yggdrasil** e con controlli di accesso |
 | **zinga** | Mini PC | **Broker Zinga** e custodia/gestione delle chiavi | Punto obbligatorio di intermediazione verso il database; progettare isolamento e gestione sicura dei segreti |
 | **Alex** | Mini PC | Server web **Apache2** | Altri collegamenti applicativi non ancora definiti |
 | **Aaa** | Mini PC con **Ryzen 5** | Da assegnare | RAM e altri dettagli non indicati |
@@ -61,6 +61,14 @@
 3. `zinga` è il **signore delle chiavi**; credenziali e segreti non devono essere pubblicati nel repository.
 4. `ale` ospita PostgreSQL; `Alex` ospita Apache2; `Aaa` resta disponibile per un ruolo futuro.
 5. Questa è **documentazione di progetto**, non una dichiarazione di servizi già implementati o verificati.
+
+## Coordinamento MCP
+
+- **Lia è l’unica coordinatrice logica degli sciami**, da ChatGPT, attraverso un connettore MCP autenticato e cifrato verso `ale`.
+- `ale` instrada le richieste ai nodi su Yggdrasil tramite connettori cifrati; `zinga` rimane il broker di autorizzazione e il custode delle chiavi.
+- Agente di controllo della posta con notifica Telegram: **previsto, macchina ancora da assegnare**.
+- Agenti Onion/Tor: **sperimentazione futura**; nessun ruolo già assegnato.
+- Dettagli e limiti: [`ARCHITETTURA_MODULARE.md`](ARCHITETTURA_MODULARE.md).
 
 ## Punti ancora da decidere
 
