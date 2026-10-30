@@ -1,0 +1,40 @@
+# Contratto di un modulo: copiare, personalizzare e sottoporre ad Alessandro.
+schema_version: "0.1"
+name: "esempio-da-sostituire"
+status: proposal
+owner: "Alessandro"
+coordinator: "Lia"
+host: "DA_DECIDERE"
+runtime: "DA_DECIDERE"
+identity:
+  service_principal: "DA_DECIDERE"
+  auth: "mTLS-o-altro-da-approvare"
+  token_ttl_seconds: null
+capabilities:
+  allowed: []
+  denied_by_default: true
+network:
+  transport: "Yggdrasil"
+  permitted_peers: []
+  inbound_ports: []
+  outbound_ports: []
+  no_direct_postgres: true
+policy:
+  broker: "zinga"
+  require_human_approval_for_sensitive_changes: true
+operations:
+  healthcheck: "DA_DECIDERE"
+  timeout_seconds: null
+  retries: null
+  max_parallel: null
+  audit_redacted: true
+recovery:
+  fail_closed: true
+  rollback: "DA_DECIDERE"
+  backup: "DA_DECIDERE"
+tests:
+  - "scope_negato"
+  - "broker_indisponibile"
+  - "rete_indisponibile"
+  - "ripristino_modulo"
+notes: "NON inserire password, token, chiavi, indirizzi riservati o dati di clienti."
