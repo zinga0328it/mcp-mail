@@ -12,5 +12,6 @@ Repository di progettazione del server MCP e degli sciami di agenti.
 - Futuri rami dedicati — uno per ciascun agente, quando decisi dall'architetto.
 
 Le regole ufficiali si trovano in [`REGOLE.md`](REGOLE.md).
+\nLa mappa dei server e dei collegamenti Yggdrasil si trova in [`INFRASTRUTTURA.md`](INFRASTRUTTURA.md).
 
 **Nota tecnica:** un ramo Git isola versioni di codice e documenti; non avvia autonomamente un agente. L'esecuzione e il coordinamento degli sciami richiederanno componenti runtime da progettare e implementare.
