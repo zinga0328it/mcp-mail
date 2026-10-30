@@ -47,6 +47,20 @@ Inventario, vincoli e aspetti da verificare: [`INFRASTRUTTURA.md`](INFRASTRUTTUR
 
 ---
 
+## Regola architetturale 3 — Coordinatrice unica Lia e gateway MCP su ale
+
+1. **Solo Lia**, all'interno di ChatGPT e secondo le richieste di Alessandro, coordina gli sciami. I server e gli agenti non assumono il ruolo di coordinatore decisionale.
+2. **ale** ospita il punto di accesso **MCP** con connettore remoto cifrato e autenticato, e comunica con le altre macchine mediante connettori cifrati nella rete modulare **Yggdrasil**.
+3. **Zinga** resta il broker delle operazioni sensibili, il custode delle chiavi e il passaggio obbligatorio per la persistenza applicativa della posta su PostgreSQL in `ale`. Il gateway MCP su ale non bypassa Zinga.
+4. **Ragno** eseguirà il mail server in Rust. Lia potrà leggere la posta tramite MCP solo quando la funzione sarà implementata e autorizzata.
+5. Un **agente monitor posta** potrà controllare l'arrivo di messaggi attesi e inviare notifiche tramite **Telegram**; il ruolo e la macchina di esecuzione restano da decidere. La notifica non implica lettura autonoma da parte di Lia fuori dalla conversazione.
+6. Gli agenti su **Tor Onion** sono una possibile fase sperimentale futura, non un'installazione già esistente e non un'alternativa ai controlli di sicurezza.
+7. I ruoli non assegnati rimangono aperti: in particolare **Aaa non è coordinatore**.
+
+Specifiche e casi d'uso: [`ARCHITETTURA_MODULARE.md`](ARCHITETTURA_MODULARE.md).
+
+---
+
 ## Autorita e ruoli
 
 1. Alessandro e l'architetto del progetto: decide obiettivi, priorita, architettura e integrazioni.
