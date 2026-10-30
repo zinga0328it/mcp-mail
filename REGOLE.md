@@ -33,6 +33,20 @@ Client di posta / integrazioni
 
 
 
+## Regola architetturale 2 — Assegnazione delle macchine
+
+1. **ragno:** server di posta elettronica, da sviluppare integralmente in **Rust** (8 GB di RAM; CPU da verificare).
+2. **zinga:** mini PC con **broker Zinga**, custodia e gestione delle chiavi; punto obbligatorio per l'accesso applicativo ai dati.
+3. **ale:** server principale che ospita **PostgreSQL**; database non esposto pubblicamente e raggiungibile dal broker attraverso **Yggdrasil**.
+4. **Alex:** mini PC dedicato ad **Apache2**; distinto da `ale`.
+5. **Aaa:** mini PC con **Ryzen 5**, ruolo ancora da definire.
+6. Tutti i nodi sono collegati alla rete **Yggdrasil** gestita dall'infrastruttura di Alessandro. Indirizzi, topologia e privilegi verranno specificati separatamente.
+7. Per il server mail è vincolante il percorso **ragno → broker zinga → PostgreSQL su ale**. Vietato il collegamento applicativo diretto dal mail server al database.
+
+Inventario, vincoli e aspetti da verificare: [`INFRASTRUTTURA.md`](INFRASTRUTTURA.md).
+
+---
+
 ## Autorita e ruoli
 
 1. Alessandro e l'architetto del progetto: decide obiettivi, priorita, architettura e integrazioni.
